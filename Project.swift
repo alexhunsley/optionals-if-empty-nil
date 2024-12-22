@@ -27,7 +27,9 @@ let project = Project(
             infoPlist: .default,
             sources: ["BlogOptionalsTuist/Tests/**"],
             resources: [],
-            dependencies: [.target(name: "BlogOptionalsTuist")]
+            dependencies: [.target(name: "BlogOptionalsTuist"),
+                           .external(name: "OrderedCollections")
+                          ]
         ),
     ]
 )

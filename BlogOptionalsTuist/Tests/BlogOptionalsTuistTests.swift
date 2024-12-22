@@ -1,5 +1,6 @@
 import Foundation
 import Testing
+import OrderedCollections
 @testable import BlogOptionalsTuist
 
 final class BlogOptionalsTuistTests {
@@ -77,6 +78,20 @@ final class BlogOptionalsTuistTests {
         let arrayEmpty: Array? = ["hi"]
         #expect(arrayEmpty.isEmptyNil == false)
         #expect(arrayEmpty.hasData == true)
+    }
+
+    @Test
+    func test_whenUseOrderedCollections_itWorks() {
+        let orderedDict: OrderedDictionary<Int, String> = .init()
+        #expect(orderedDict.isEmptyNil == true)
+        #expect(orderedDict.hasData == false)
+    }
+
+    @Test
+    func test_whenUseOptionalOrderedCollections_itWorks() {
+        let orderedDict: OrderedDictionary<Int, String>? = .init()
+        #expect(orderedDict.isEmptyNil == true)
+        #expect(orderedDict.hasData == false)
     }
 
 //    // we can only list one items here because of Xcode bug:
