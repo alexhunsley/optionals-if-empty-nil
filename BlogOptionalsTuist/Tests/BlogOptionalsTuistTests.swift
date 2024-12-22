@@ -1,8 +1,9 @@
 import Foundation
-import XCTest
+import Testing
 
-final class BlogOptionalsTuistTests: XCTestCase {
+final class BlogOptionalsTuistTests {
+    @Test
     func test_twoPlusTwo_isFour() {
-        XCTAssertEqual(2+2, 4)
+        #expect(2+2 == 4)
     }
 }
