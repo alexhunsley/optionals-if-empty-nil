@@ -6,11 +6,11 @@ let project = Project(
         .target(
             name: "BlogOptionalsTuist",
             destinations: .macOS,
-            product: .app,
+            product: .staticLibrary,
             bundleId: "io.tuist.BlogOptionalsTuist",
             infoPlist: .default,
             sources: ["BlogOptionalsTuist/Sources/**"],
-            resources: ["BlogOptionalsTuist/Resources/**"],
+            resources: [],
             dependencies: []
         ),
         .target(
