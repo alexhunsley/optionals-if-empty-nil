@@ -6,6 +6,10 @@ final class BlogOptionalsTuistTests {
 
     // MARK: Custom type conformance
 
+    static let nilData: Data? = .init()
+    static let nilString: String? = .init()
+    static let nilStringArray: [String]? = .init()
+
     @Test
     func test_whenMakeCustomStructNil_returnsEmptyTrue() {
         let userNil: User? = nil
@@ -73,5 +77,36 @@ final class BlogOptionalsTuistTests {
         let arrayEmpty: Array? = ["hi"]
         #expect(arrayEmpty.isEmptyNil == false)
         #expect(arrayEmpty.hasData == true)
+    }
+
+    // we can only list one items here because of Xcode bug:
+    // "Thread 2: Fatal error: Internal inconsistency: No test reporter for test case argumentIDs:"
+    // @see https://forums.swift.org/t/fatal-error-internal-inconsistency-no-test-reporter-for-test-case-argumentids/75666/3
+    @Test("Non-optional Swift API instances that are .isEmpty == true",
+          arguments: [
+            Data(),
+//            String(),
+//            [String]()
+          ] as! [any Emptyness]) // must be 'any Emptyness'
+    func test_whenMakeSwiftAPINonNilEmpty_returnEmptyTrue(value: Emptyness) {
+        #expect(value.isEmptyNil == true)
+        #expect(value.hasData == false)
+    }
+
+    @Test("Optional Swift API instances that are .isEmpty == true",
+          arguments: [
+            BlogOptionalsTuistTests.nilData
+//            BlogOptionalsTuistTests.nilString,
+//            BlogOptionalsTuistTests.nilStringArray
+            //        "By the Lake",
+//        "Camping in the Woods"
+    ])
+    func test_whenMakeSwiftAPINil_returnEmptyTrue(value: Emptyness) {
+
+//        let dataEmpty: Data? = "Some data".data(using: .utf8)
+//        @available(*, deprecated)   // doesn't stop warning
+        #expect(value.isEmptyNil == true)
+//        @available(*, deprecated)
+        #expect(value.hasData == false)
     }
 }

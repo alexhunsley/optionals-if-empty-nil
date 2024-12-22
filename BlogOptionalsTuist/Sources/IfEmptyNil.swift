@@ -1,7 +1,7 @@
 import Foundation
 
 // will apply manually to collections, strings etc.
-protocol Emptyness {
+protocol Emptyness { //}: Sendable {
     var isEmpty: Bool { get }
 }
 

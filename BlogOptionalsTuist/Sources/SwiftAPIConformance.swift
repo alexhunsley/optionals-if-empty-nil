@@ -27,3 +27,21 @@ extension UnsafeBufferPointer: Emptyness {}
 // the marks Collection as Emptyness (it already implements the method)
 protocol Collection: Emptyness {}
 protocol Sequence: Emptyness {}
+
+// strict concurrency checking verification
+
+//@MainActor
+//class Example {
+//    var value: Int = 0
+//}
+//
+//func testStrictConcurrency() {
+//    let example = Example()
+//
+//    Task.detached {
+//        // This should produce a compile-time error with strict concurrency
+//        // because we're accessing a @MainActor property from a background thread.
+////        print(example.value)
+//        await print(example.value)
+//    }
+//}

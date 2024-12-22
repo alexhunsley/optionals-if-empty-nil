@@ -2,6 +2,12 @@ import ProjectDescription
 
 let project = Project(
     name: "BlogOptionalsTuist",
+    settings: .settings(
+        base: [
+//            "OTHER_SWIFT_FLAGS": ["-Xfrontend", "-swift-concurrency=strict"],
+            "SWIFT_STRICT_CONCURRENCY": "complete"
+        ]
+    ),
     targets: [
         .target(
             name: "BlogOptionalsTuist",
